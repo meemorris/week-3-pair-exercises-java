@@ -10,17 +10,18 @@ public class DepartmentTests {
 
     @Test
     public void transferEmployeeIn() {
-
+        //Arrange
+        Department sut = new Department("New Department");
         Department oldDept = new Department("Old Department");
-        Department newDept = new Department("New Department");
-
         Employee employee = new Employee("Test","Test");
         employee.setDepartment(oldDept);
-        newDept.transferEmployeeIn(employee);
 
+        //Act
+        sut.transferEmployeeIn(employee);
+
+        //Assert
         List<Employee> oldDeptEmployees = oldDept.getDepartmentEmployees();
-        List<Employee> newDeptEmployees = newDept.getDepartmentEmployees();
-
+        List<Employee> newDeptEmployees = sut.getDepartmentEmployees();
         assertEquals("Old Department Employees size is not equal to 0", 0, oldDeptEmployees.size());
         assertEquals("New Department Employees size is not equal to 1", 1, newDeptEmployees.size());
         assertTrue("New Department Employees does not contain employee", newDeptEmployees.contains(employee));
@@ -28,29 +29,32 @@ public class DepartmentTests {
 
     @Test
     public void setDepartmentHead_TestManager() {
-        Department department = new Department("Test Department");
+        Department sut = new Department("Test Department");
         Manager manager = new Manager("Manager", "Managerson", "Manager of Testing", 100000);
-        department.setDepartmentHead(manager);
 
-        assertEquals("Manager is not equal to the department head.",manager,department.getDepartmentHead());
+        sut.setDepartmentHead(manager);
+
+        assertEquals("Manager is not equal to the department head.",manager,sut.getDepartmentHead());
     }
 
     @Test
     public void setDepartmentHead_TestDirector() {
-        Department department = new Department("Test Department");
+        Department sut = new Department("Test Department");
         Manager manager = new Manager("Manager", "Managerson", "Director of Testing", 100000);
-        department.setDepartmentHead(manager);
 
-        assertEquals("Manager is not equal to the department head.",manager,department.getDepartmentHead());
+        sut.setDepartmentHead(manager);
+
+        assertEquals("Manager is not equal to the department head.",manager,sut.getDepartmentHead());
     }
 
     @Test
     public void setDepartmentHead_BadTitle() {
-        Department department = new Department("Test Department");
+        Department sut = new Department("Test Department");
         Manager manager = new Manager("Manager", "Managerson", "Head of Testing", 100000);
-        department.setDepartmentHead(manager);
 
-        assertNull("Manager title does not start with Manager or Director and therefor should be null.", department.getDepartmentHead());
-        assertNotEquals("Manager and department head are the same and they shouldn't be.",manager,department.getDepartmentHead());
+        sut.setDepartmentHead(manager);
+
+        assertNull("Manager title does not start with Manager or Director and therefor should be null.", sut.getDepartmentHead());
+        assertNotEquals("Manager and department head are the same and they shouldn't be.",manager,sut.getDepartmentHead());
     }
 }

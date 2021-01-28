@@ -12,27 +12,29 @@ public class EmployeeTests {
 
     @Test
     public void getFullNameReturnsCorrectFormat() {
-        Employee employee = new Employee("Test", "Testerson");
-        String fullName = employee.getFullName();
+        Employee sut = new Employee("Test", "Testerson");
+
+        String fullName = sut.getFullName();
 
         assertEquals("The employee full name is not in the correct format.", "Testerson, Test", fullName);
     }
 
     @Test
     public void raiseSalaryTest_Positive() {
-        Employee employee = new Employee("Test", "Testerson");
-        employee.setSalary(100);
-        employee.raiseSalary(5);
+        Employee sut = new Employee("Test", "Testerson");
+        sut.setSalary(100);
 
-        assertEquals("The employee raise of 5% was not computed correctly.",employee.getSalary(), 100 * 1.05, 0.0);
+        sut.raiseSalary(5);
+
+        assertEquals("The employee raise of 5% was not computed correctly.",sut.getSalary(), 105, 0.0);
     }
 
     @Test
     public void raiseSalaryTest_Negative() {
-        Employee employee = new Employee("Test", "Testerson");
-        employee.setSalary(100);
-        employee.raiseSalary(-10); //"raise" by negative 10%
+        Employee sut = new Employee("Test", "Testerson");
+        sut.setSalary(100);
+        sut.raiseSalary(-10); //"raise" by negative 10%
 
-        assertEquals("Salary should remain the same when raise percentage is negative.",100, employee.getSalary(),0.0);
+        assertEquals("Salary should remain the same when raise percentage is negative.",100, sut.getSalary(),0.0);
     }
 }

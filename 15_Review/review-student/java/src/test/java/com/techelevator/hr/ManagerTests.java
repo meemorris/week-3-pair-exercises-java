@@ -9,10 +9,11 @@ public class ManagerTests {
 
     @Test
     public void hireEmployee() {
-        Manager manager = new Manager("Manager", "Managerson");
+        Manager sut = new Manager("Manager", "Managerson");
         Department department = new Department("Test Department");
-        manager.setDepartment(department);
-        Employee employee = manager.hireEmployee("Test", "Testerson", "Tester of testing", 50000);
+        sut.setDepartment(department);
+
+        Employee employee = sut.hireEmployee("Test", "Testerson", "Tester of testing", 50000);
 
         assertEquals("Employee first name does not equal expected result.","Test", employee.getFirstName());
         assertEquals("Employee last name does not equal expected result.","Testerson", employee.getLastName());
