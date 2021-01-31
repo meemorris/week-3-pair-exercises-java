@@ -10,7 +10,7 @@ public class Person {
 
     }
 
-    public Person(String firstName, String lastName) {
+    public Person(String firstName, String lastName) { //when you add a constructor, the default one goes away
         this.firstName = firstName;
         this.lastName = lastName;
     }

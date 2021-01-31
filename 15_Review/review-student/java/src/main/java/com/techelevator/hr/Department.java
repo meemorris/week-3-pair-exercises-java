@@ -16,8 +16,8 @@ public class Department {
 
     public void transferEmployeeIn(Employee employee) {
         employee.getDepartment().getDepartmentEmployees().remove(employee);
-        employee.setDepartment(this);
-        this.departmentEmployees.add(employee);
+        employee.setDepartment(this); //this refers to sut in the method, setDepartment is an Employee class method
+        this.departmentEmployees.add(employee); //the this here is totally optional
     }
 
     // getters and setters
